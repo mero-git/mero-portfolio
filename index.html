@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mero Obuwoma - Finance Student & Aspiring Analyst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #faf9f6;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #2d2d2d;
+            --border: #e5e5e5;
+            --hover-bg: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            padding: 48px 0 24px;
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-primary);
+            z-index: 100;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        header.scrolled {
+            border-bottom-color: var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+
+        .hero {
+            padding: 120px 0 100px;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid var(--accent);
+        }
+
+        .btn:hover {
+            background-color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--text-primary);
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        .about-text p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .experience-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .experience-card:hover {
+            border-color: var(--text-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 16px;
+        }
+
+        .experience-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .experience-company {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .experience-date {
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .experience-description ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 12px;
+        }
+
+        .experience-description li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .experience-description li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--text-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            background-color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card:hover {
+            border-color: var(--text-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background-color: var(--hover-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .skill-category h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background-color: var(--hover-bg);
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .social-link {
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-link:hover {
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+            background-color: var(--hover-bg);
+        }
+
+        footer {
+            padding: 48px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .resume-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .experience-date {
+                white-space: normal;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">Mero Obuwoma</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>Mero Obuwoma</h1>
+            <p class="subtitle">
+                Second-year Commerce student at the University of Ottawa, specializing in Finance and Business Technology Management. 
+                Passionate about asset management, private wealth, equity research, and leveraging data-driven insights to inform investment decisions.
+            </p>
+            <div class="hero-links">
+                <a href="#contact" class="btn">Get in Touch</a>
+                <a href="#experience" class="btn btn-outline">View Experience</a>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="section-header">
+                <div class="section-title">About Me</div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm currently pursuing a Bachelor's Degree in Commerce at the University of Ottawa, with a focus on Business Technology Management and Finance. 
+                        My academic journey has equipped me with a strong foundation in financial modeling, valuation techniques, and data analysis.
+                    </p>
+                    <div class="resume-download">
+                        <a href="#resume" class="btn btn-outline">View Resume</a>
+                        <a href="YOUR_RESUME_PDF_LINK_HERE" class="btn btn-outline" download>Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUME SECTION -->
+        <section id="resume">
+            <div class="section-header">
+                <div class="section-title">Resume</div>
+                <h2>Professional Summary</h2>
+            </div>
+            
+            <!-- Education -->
+            <div class="experience-card" style="margin-bottom: 32px;">
+                <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Education</h3>
+                
+                <div style="margin-bottom: 24px;">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Bachelor's Degree of Commerce</div>
+                            <div class="experience-company">University of Ottawa</div>
+                        </div>
+                        <div class="experience-date">Present</div>
+                    </div>
+                    <div class="experience-description">
+                        <p style="margin-bottom: 8px;"><strong>Specializations:</strong> Business Technology Management (Current) and Finance (Pending Change)</p>
+                        <p style="margin-bottom: 8px;"><strong>Cumulative GPA:</strong> 8.3/10</p>
+                        <p><strong>Relevant Coursework:</strong> ADM1370 - Advanced IT tools, AI applications, and Microsoft 365 Suite proficiency</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">High School Diploma</div>
+                            <div class="experience-company">Atlantic Hall School</div>
+                        </div>
+                        <div class="experience-date">Graduated</div>
+                    </div>
+                    <div class="experience-description">
+                        <p><strong>Honors:</strong> 9.1/10 CGPA, President of Conservation Club, Year Group Prefect/Warden</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="experience-card" style="margin-bottom: 32px;">
+                <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Additional Information</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Technical Skills</p>
+                    <p style="color: var(--text-secondary);">Microsoft 365, Adobe Creative Cloud</p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Certifications</p>
+                    <p style="color: var(--text-secondary);">Microsoft Business Analysis, Canadian Securities Course (CSC) (In Progress)</p>
+                </div>
+
+                <div>
+                    <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Interests</p>
+                    <p style="color: var(--text-secondary);">DJing, Investing, Reading, Tech/AI & Fitness/Calisthenics</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px; text-align: center;">
+                <a href="YOUR_RESUME_PDF_LINK_HERE" class="btn" download>Download PDF Resume</a>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience">
+            <div class="section-header">
+                <div class="section-title">Experience</div>
+            </div>
+            <div class="experience-list">
+                <!-- Marker Role -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Marker (ADM 1300)</div>
+                            <div class="experience-company">University of Ottawa</div>
+                        </div>
+                        <div class="experience-date">Aug 2024 – Present</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Evaluated assignments, learning exchanges, and exams for a first-year business course with over 350 students, ensuring fairness and accuracy</li>
+                            <li>Provided constructive feedback to support student learning and reinforce understanding of business fundamentals</li>
+                            <li>Collaborated with instructors and teaching assistants to maintain consistent grading standards</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Gift Better Co -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Operations Associate</div>
+                            <div class="experience-company">Gift Better Co.</div>
+                        </div>
+                        <div class="experience-date">Nov 2024 – Sep 2025</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Prepared and shipped over 2,000+ gift boxes for major clients including Shopify, Amazon, Deloitte, and Telus during peak season</li>
+                            <li>Identified workflow improvements that boosted operational efficiency by 5%, demonstrating analytical problem-solving skills</li>
+                            <li>Managed inventory and maintained organized fulfillment operations in fast-paced environment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bridge Nigeria -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Volunteer Teacher</div>
+                            <div class="experience-company">Bridge Nigeria</div>
+                        </div>
+                        <div class="experience-date">May 2023 – Jul 2024</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Taught foundational Math, Business, and English to over 100 primary school students in underserved communities</li>
+                            <li>Developed curriculum materials and assessment tools to track student progress</li>
+                            <li>Contributed to a supportive learning environment, gaining hands-on experience in mentorship and classroom management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Conservation Club -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">President, Conservation Club</div>
+                            <div class="experience-company">Atlantic Hall School</div>
+                        </div>
+                        <div class="experience-date">Jul 2020 – Jul 2023</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Led over 25 environmental clean-up campaigns and school-wide sustainability initiatives</li>
+                            <li>Mentored peers and fostered collaborative environment to achieve yearly performance benchmarks</li>
+                            <li>Managed budgets, coordinated events, and built relationships with community partners</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <div class="section-header">
+                <div class="section-title">Projects & Work</div>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1: DCF Valuation -->
+                <div class="project-card">
+                    <div class="project-icon">📊</div>
+                    <h3 class="project-title">Equity DCF Valuation Models</h3>
+                    <p class="project-description">
+                        Built comprehensive discounted cash flow models for public companies across multiple sectors. 
+                        Conducted sensitivity analysis and scenario modeling to assess intrinsic value under various market conditions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <div class="section-header">
+                <div class="section-title">Skills & Expertise</div>
+            </div>
+            <div class="skills-grid">
+                <!-- Finance Skills -->
+                <div class="skill-category">
+                    <h3>Finance & Valuation</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">DCF Modeling</span>
+                        <span class="skill-tag">Equity Valuation</span>
+                        <span class="skill-tag">Financial Analysis</span>
+                        <span class="skill-tag">Investment Research</span>
+                        <span class="skill-tag">Portfolio Management</span>
+                        <span class="skill-tag">Risk Analysis</span>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="skill-category">
+                    <h3>Technical & Data</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Excel (Advanced)</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Python (Basics)</span>
+                        <span class="skill-tag">Microsoft 365</span>
+                        <span class="skill-tag">Adobe Creative Cloud</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-category">
+                    <h3>Professional Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Research & Analysis</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Mentorship</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Collaboration</span>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="skill-category">
+                    <h3>Certifications</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Microsoft Business Analysis</span>
+                        <span class="skill-tag">CSC (In Progress)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <div class="section-header">
+                <div class="section-title">Get in Touch</div>
+            </div>
+            <div class="contact-content">
+                <p>
+                    I'm actively seeking opportunities in wealth management, private markets, and equity research. 
+                    If you'd like to discuss finance, investments, or potential opportunities, feel free to reach out.
+                </p>
+                <a href="mailto:oobuw021@uottawa.ca" class="btn">Send me an Email</a>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/meroob" class="social-link" target="_blank">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/mero-git" class="social-link" target="_blank">
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Built by Mero Obuwoma © 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            document.getElementById('scrollIndicator').style.width = scrolled + '%';
+        });
+
+        // Header background on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
