@@ -193,8 +193,9 @@
 
         .about-content {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 48px;
+            align-items: start;
         }
 
         .about-text p {
@@ -202,6 +203,20 @@
             color: var(--text-secondary);
             margin-bottom: 20px;
             line-height: 1.7;
+        }
+
+        .about-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .experience-list {
@@ -462,6 +477,15 @@
             h2 {
                 font-size: 28px;
             }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                max-width: 200px;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -474,7 +498,6 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#resume">Resume</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -512,6 +535,9 @@
                         <a href="YOUR_RESUME_PDF_LINK_HERE" class="btn btn-outline" download>Download PDF</a>
                     </div>
                 </div>
+                <div class="about-image-container">
+                    <img src="profile-photo.jpg" alt="Mero Obuwoma" class="about-image">
+                </div>
             </div>
         </section>
 
@@ -523,7 +549,7 @@
             </div>
             
             <!-- Education -->
-            <div class="experience-card" style="margin-bottom: 32px;">
+            <div class="experience-card" style="margin-bottom: 16px;">
                 <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Education</h3>
                 
                 <div style="margin-bottom: 24px;">
@@ -553,30 +579,6 @@
                         <p><strong>Honors:</strong> 9.1/10 CGPA, President of Conservation Club, Year Group Prefect/Warden</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Additional Information -->
-            <div class="experience-card" style="margin-bottom: 32px;">
-                <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Additional Information</h3>
-                
-                <div style="margin-bottom: 20px;">
-                    <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Technical Skills</p>
-                    <p style="color: var(--text-secondary);">Microsoft 365, Adobe Creative Cloud</p>
-                </div>
-
-                <div style="margin-bottom: 20px;">
-                    <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Certifications</p>
-                    <p style="color: var(--text-secondary);">Microsoft Business Analysis, Canadian Securities Course (CSC) (In Progress)</p>
-                </div>
-
-                <div>
-                    <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Interests</p>
-                    <p style="color: var(--text-secondary);">DJing, Investing, Reading, Tech/AI & Fitness/Calisthenics</p>
-                </div>
-            </div>
-
-            <div style="margin-top: 32px; text-align: center;">
-                <a href="YOUR_RESUME_PDF_LINK_HERE" class="btn" download>Download PDF Resume</a>
             </div>
         </section>
 
@@ -717,7 +719,6 @@
                         <span class="skill-tag">Research & Analysis</span>
                         <span class="skill-tag">Communication</span>
                         <span class="skill-tag">Leadership</span>
-                        <span class="skill-tag">Mentorship</span>
                         <span class="skill-tag">Problem Solving</span>
                         <span class="skill-tag">Collaboration</span>
                     </div>
@@ -728,7 +729,8 @@
                     <h3>Certifications</h3>
                     <div class="skill-list">
                         <span class="skill-tag">Microsoft Business Analysis</span>
-                        <span class="skill-tag">CSC (In Progress)</span>
+                        <span class="skill-tag">Bloomberg Market Concepts (BMC)</span>
+                        <span class="skill-tag">Canadian Securities Course (In Progress)</span>
                     </div>
                 </div>
             </div>
