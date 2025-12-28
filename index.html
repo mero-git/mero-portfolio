@@ -118,6 +118,37 @@
             justify-content: center;
         }
 
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 72px;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
         .hero h1 {
             font-size: 56px;
             font-weight: 600;
@@ -434,6 +465,21 @@
         }
 
         @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 48px;
+            }
+
+            .hero-image {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
             .hero h1 {
                 font-size: 40px;
             }
@@ -496,8 +542,7 @@
         <nav>
             <a href="#" class="logo">Mero Obuwoma</a>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
+                <li><a href="#resume">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -508,10 +553,16 @@
     <main class="container">
         <!-- HERO SECTION -->
         <section class="hero">
-            <h1>Mero Obuwoma</h1>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Mero Obuwoma</h1>
+                </div>
+                <div class="hero-image-container">
+                    <img src="profile-photo.jpg" alt="Mero Obuwoma" class="hero-image">
+                </div>
+            </div>
             <p class="subtitle">
-                Second-year Commerce student at the University of Ottawa, specializing in Finance and Business Technology Management. 
-                Passionate about asset management, private wealth, equity research, and leveraging data-driven insights to inform investment decisions.
+                Second-year Bachelor of Commerce student at the University of Ottawa, specializing in Finance and Business Technology Management, with a strong interest in private wealth management and private equity, and I enjoy using financial modeling and data-driven insights to better understand markets and investment opportunities.
             </p>
             <div class="hero-links">
                 <a href="#contact" class="btn">Get in Touch</a>
@@ -519,80 +570,41 @@
             </div>
         </section>
 
-        <!-- ABOUT SECTION -->
-        <section id="about">
-            <div class="section-header">
-                <div class="section-title">About Me</div>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm currently pursuing a Bachelor's Degree in Commerce at the University of Ottawa, with a focus on Business Technology Management and Finance. 
-                        My academic journey has equipped me with a strong foundation in financial modeling, valuation techniques, and data analysis.
-                    </p>
-                    <div class="resume-download">
-                        <a href="#resume" class="btn btn-outline">View Resume</a>
-                        <a href="YOUR_RESUME_PDF_LINK_HERE" class="btn btn-outline" download>Download PDF</a>
-                    </div>
-                </div>
-                <div class="about-image-container">
-                    <img src="profile-photo.jpg" alt="Mero Obuwoma" class="about-image">
-                </div>
-            </div>
-        </section>
-
         <!-- RESUME SECTION -->
-        <section id="resume">
+        <section id="resume" style="padding-bottom: 20px;">
             <div class="section-header">
-                <div class="section-title">Resume</div>
                 <h2>Professional Summary</h2>
             </div>
             
             <!-- Education -->
-            <div class="experience-card" style="margin-bottom: 16px;">
+            <div class="experience-card" style="margin-bottom: 32px;">
                 <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Education</h3>
                 
-                <div style="margin-bottom: 24px;">
+                <div>
                     <div class="experience-header">
                         <div>
                             <div class="experience-title">Bachelor's Degree of Commerce</div>
                             <div class="experience-company">University of Ottawa</div>
+                            <div class="experience-company" style="font-style: italic; margin-top: 4px;">Major in Finance and Business Technology Management</div>
                         </div>
                         <div class="experience-date">Present</div>
                     </div>
                     <div class="experience-description">
-                        <p style="margin-bottom: 8px;"><strong>Specializations:</strong> Business Technology Management (Current) and Finance (Pending Change)</p>
-                        <p style="margin-bottom: 8px;"><strong>Cumulative GPA:</strong> 8.3/10</p>
-                        <p><strong>Relevant Coursework:</strong> ADM1370 - Advanced IT tools, AI applications, and Microsoft 365 Suite proficiency</p>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">High School Diploma</div>
-                            <div class="experience-company">Atlantic Hall School</div>
-                        </div>
-                        <div class="experience-date">Graduated</div>
-                    </div>
-                    <div class="experience-description">
-                        <p><strong>Honors:</strong> 9.1/10 CGPA, President of Conservation Club, Year Group Prefect/Warden</p>
+                        <p style="margin-bottom: 8px;"><strong>Cumulative GPA:</strong> 8.25/10 (3.3/4)</p>
+                        <p><strong>Relevant Coursework:</strong> ADM2341 Managerial Accounting: Basic cost accounting. ADM 2350 Financial Management: Understanding of financial concepts and valuation methods like TMV, WACC, DCFs).</p>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- EXPERIENCE SECTION -->
-        <section id="experience">
-            <div class="section-header">
-                <div class="section-title">Experience</div>
-            </div>
-            <div class="experience-list">
+            <!-- Experience -->
+            <div class="experience-card" style="margin-bottom: 24px;">
+                <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Experience</h3>
+
                 <!-- Marker Role -->
-                <div class="experience-card">
+                <div style="margin-bottom: 32px;">
                     <div class="experience-header">
                         <div>
-                            <div class="experience-title">Marker (ADM 1300)</div>
+                            <div class="experience-title">Corrector (ADM 1300)</div>
                             <div class="experience-company">University of Ottawa</div>
                         </div>
                         <div class="experience-date">Aug 2024 – Present</div>
@@ -607,7 +619,7 @@
                 </div>
 
                 <!-- Gift Better Co -->
-                <div class="experience-card">
+                <div style="margin-bottom: 32px;">
                     <div class="experience-header">
                         <div>
                             <div class="experience-title">Operations Associate</div>
@@ -624,26 +636,26 @@
                     </div>
                 </div>
 
-                <!-- Bridge Nigeria -->
-                <div class="experience-card">
+                <!-- Jobakor & Associates -->
+                <div style="margin-bottom: 32px;">
                     <div class="experience-header">
                         <div>
-                            <div class="experience-title">Volunteer Teacher</div>
-                            <div class="experience-company">Bridge Nigeria</div>
+                            <div class="experience-title">Intern</div>
+                            <div class="experience-company">Jobakor & Associates Limited</div>
                         </div>
-                        <div class="experience-date">May 2023 – Jul 2024</div>
+                        <div class="experience-date">May 2022 – Jul 2023</div>
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li>Taught foundational Math, Business, and English to over 100 primary school students in underserved communities</li>
-                            <li>Developed curriculum materials and assessment tools to track student progress</li>
-                            <li>Contributed to a supportive learning environment, gaining hands-on experience in mentorship and classroom management</li>
+                            <li>Worked directly with the head of sales to improve sales strategy, client outreach, and contract acquisition in the oil and gas sector, gaining relevant exposure to business operations</li>
+                            <li>Drove a 10% increase in sales and contract volume through targeted cold calling, strategic prospecting, and relationship management with clients and partner companies</li>
+                            <li>Strengthened B2B communication and negotiation skills while supporting long-term service delivery improvements in a competitive, high-stakes environment</li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Conservation Club -->
-                <div class="experience-card">
+                <div>
                     <div class="experience-header">
                         <div>
                             <div class="experience-title">President, Conservation Club</div>
@@ -671,10 +683,20 @@
                 <!-- Project 1: DCF Valuation -->
                 <div class="project-card">
                     <div class="project-icon">📊</div>
-                    <h3 class="project-title">Equity DCF Valuation Models</h3>
+                    <h3 class="project-title">DCF Valuation Models</h3>
                     <p class="project-description">
                         Built comprehensive discounted cash flow models for public companies across multiple sectors. 
                         Conducted sensitivity analysis and scenario modeling to assess intrinsic value under various market conditions.
+                    </p>
+                </div>
+
+                <!-- Project 2: Comparable Company Analysis -->
+                <div class="project-card">
+                    <div class="project-icon">📈</div>
+                    <h3 class="project-title">Comparable Company Analysis</h3>
+                    <p class="project-description">
+                        Performed relative valuation analysis using trading multiples and comparable company metrics. 
+                        Analyzed peer groups across industries to benchmark valuation and identify market positioning.
                     </p>
                 </div>
             </div>
