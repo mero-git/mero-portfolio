@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mero Obuwoma - Finance Student & Aspiring Analyst</title>
+    <meta name="description" content="Mero Obuwoma — Second-year BCom student at the University of Ottawa specializing in Finance and Business Technology Management, with interests in private wealth management and private equity.">
+    <meta property="og:title" content="Mero Obuwoma - Finance Student & Aspiring Analyst">
+    <meta property="og:description" content="Finance student at the University of Ottawa with experience in financial modeling, equity research, and data-driven analysis.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#faf9f6">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -464,6 +469,24 @@
             transition: width 0.1s ease;
         }
 
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent);
+            color: white;
+            padding: 8px 16px;
+            z-index: 9999;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 0 0 6px 0;
+            transition: top 0.2s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
         @media (max-width: 768px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -536,6 +559,7 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="scroll-indicator" id="scrollIndicator"></div>
 
     <header id="header">
@@ -549,7 +573,7 @@
         </nav>
     </header>
 
-    <main class="container">
+    <main class="container" id="main-content">
         <!-- HERO SECTION -->
         <section class="hero">
             <div class="hero-content">
@@ -565,7 +589,7 @@
             </p>
             <div class="hero-links">
                 <a href="#contact" class="btn">Get in Touch</a>
-                <a href="#experience" class="btn btn-outline">View Experience</a>
+                <a href="#resume" class="btn btn-outline">View Experience</a>
             </div>
         </section>
 
@@ -662,7 +686,7 @@
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li>Developed an innovative solution packaging 4 features (Tap-to-Send, Pods, Family Spend Assist, Interac Identity) into one all-purpose AI agent that ease payment processed</li>
+                            <li>Developed an innovative solution packaging 4 features (Tap-to-Send, Pods, Family Spend Assist, Interac Identity) into one all-purpose AI agent that eases payment processing</li>
                             <li>Worked in a team to design a Tap-to-Send user flows to remove manual recipient entry and reduce payment friction and built an Identity verification rules to keep AI-initiated payments controlled and safe</li>
                         </ul>
                     </div>
@@ -697,7 +721,7 @@
                     </div>
                     <div class="experience-description">
                         <ul>
-                            <li>Sourced and evaluate over 10+ oil & gas contracts from piping/fabrication to fire safety systems, Select Transaction Experience: Sell-side, Energy, Deal Analyst, Revenue~($100k)</li>
+                            <li>Sourced and evaluated 10+ oil & gas contracts from piping/fabrication to fire safety systems, Select Transaction Experience: Sell-side, Energy, Deal Analyst, Revenue~($100k)</li>
                             <li>Built models for cost and profitability analysis by analyzing the scope, supplier/OEM pricing, logistics and more</li>
                             <li>Increased sales and contract volume by 5% through targeted prospecting, pipeline management, and client/partner relationship building</li>
                         </ul>
@@ -738,7 +762,7 @@
                     <div class="experience-description">
                         <ul>
                             <li>Fostered to a supportive, motivating learning environment for over 100 students across multiple classrooms, and gained hands-on experience with student assessment and classroom management</li>
-                            <li>Taught foundational Math, Business and English to primary school students in underserved communities as part of Bridge Nigeria's mission to deliver high-quality, affordable and teach enabled education</li>
+                            <li>Taught foundational Math, Business and English to primary school students in underserved communities as part of Bridge Nigeria's mission to deliver high-quality, affordable and tech-enabled education</li>
                         </ul>
                     </div>
                 </div>
@@ -815,10 +839,10 @@
                 <a href="mailto:oobuw021@uottawa.ca" class="btn">Send me an Email</a>
                 
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/meroob" class="social-link" target="_blank">
+                    <a href="https://www.linkedin.com/in/meroob" class="social-link" target="_blank" rel="noopener noreferrer">
                         <span>LinkedIn</span>
                     </a>
-                    <a href="https://github.com/mero-git" class="social-link" target="_blank">
+                    <a href="https://github.com/mero-git" class="social-link" target="_blank" rel="noopener noreferrer">
                         <span>GitHub</span>
                     </a>
                 </div>
@@ -828,7 +852,7 @@
 
     <footer>
         <div class="container">
-            <p>Built by Mero Obuwoma © 2025</p>
+            <p>Built by Mero Obuwoma © 2026</p>
         </div>
     </footer>
 
