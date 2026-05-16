@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mero Obuwoma - Finance Student & Aspiring Analyst</title>
-    <meta name="description" content="Mero Obuwoma — Second-year BCom student at the University of Ottawa specializing in Finance and Business Technology Management, with interests in private wealth management and private equity.">
+    <meta name="description" content="Mero Obuwoma — Second-year BCom student at the University of Ottawa, dual major in Finance and Business Technology Management, with interests in risk management and capital markets.">
     <meta property="og:title" content="Mero Obuwoma - Finance Student & Aspiring Analyst">
-    <meta property="og:description" content="Finance student at the University of Ottawa with experience in financial modeling, equity research, and data-driven analysis.">
+    <meta property="og:description" content="Finance student at the University of Ottawa with experience in financial modeling, equity research, and AML process engineering.">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#0b0b14">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -360,20 +360,111 @@
             transition: all 0.2s;
         }
         .tag:hover { border-color: var(--border-acc); color: var(--text); background: var(--accent-dim); }
-        .cert-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-        .cert-list li {
-            font-size: 14px;
-            color: var(--text-muted);
+        .cert-stack { display: flex; flex-direction: column; gap: 10px; }
+        .cert-row {
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-direction: column;
+            gap: 8px;
+            transition: border-color 0.25s, background 0.25s;
         }
-        .cert-list li::before {
-            content: "";
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-            flex-shrink: 0;
+        .cert-row:hover {
+            border-color: var(--border-acc);
+            background: rgba(201,168,76,0.04);
+        }
+        .cert-name {
+            font-size: 13.5px;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .cert-status {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 4px;
+            align-self: flex-start;
+        }
+        .status-progress {
+            color: #8a9eb8;
+            background: rgba(138,158,184,0.1);
+            border: 1px solid rgba(138,158,184,0.25);
+        }
+        .status-done {
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid var(--border-acc);
+        }
+
+        /* Skill subsections */
+        .skill-group { margin-bottom: 22px; }
+        .skill-group:last-child { margin-bottom: 0; }
+        .skill-group-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 11px;
+            font-weight: 600;
+        }
+
+        /* Case competitions / scholarships */
+        .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .chip-row .gpa-chip { margin-bottom: 0; }
+        .sub-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin: 22px 0 10px;
+        }
+        .comp-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .comp-list li {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            padding-left: 18px;
+            position: relative;
+        }
+        .comp-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 11px;
+            top: 1px;
+        }
+        .comp-list strong { color: var(--text); font-weight: 600; }
+        .sub-entry {
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-left: 2px solid var(--border-acc);
+            background: rgba(201,168,76,0.03);
+            border-radius: 0 6px 6px 0;
+        }
+        .sub-entry-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .sub-entry-title {
+            font-size: 13.5px;
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 8px;
         }
         .plum-link {
             display: inline-block;
@@ -536,7 +627,7 @@
                     <div>
                         <div class="hero-eyebrow">Finance &amp; Capital Markets</div>
                         <h1 class="hero-name">Mero<br>Obuwoma<span>.</span></h1>
-                        <p class="hero-sub">Second-year Bachelor of Commerce student at the University of Ottawa, specializing in Finance and Business Technology Management — with a strong interest in private wealth management, private equity, and equity research.</p>
+                        <p class="hero-sub">Second-year Bachelor of Commerce student at the University of Ottawa, dual major in Finance and Business Technology Management — with a strong interest in risk management and capital markets.</p>
                         <div class="hero-btns">
                             <a href="#contact" class="btn-gold">Get in Touch</a>
                             <a href="#resume" class="btn-ghost">View Experience</a>
@@ -560,30 +651,40 @@
                     <div class="exp-card-label">Education</div>
                     <div class="exp-row">
                         <div>
-                            <div class="exp-title">Bachelor's Degree of Commerce</div>
-                            <div class="exp-co">University of Ottawa &mdash; Major in Finance &amp; Business Technology Management</div>
+                            <div class="exp-title">Bachelor of Commerce &mdash; Dual Major in Finance &amp; Business Technology Management</div>
+                            <div class="exp-co">University of Ottawa, Telfer School of Management</div>
                         </div>
-                        <div class="exp-date">Present</div>
+                        <div class="exp-date">Expected Jun 2028</div>
                     </div>
-                    <div class="gpa-chip">GPA &nbsp;3.4 / 4.0</div>
-                    <div class="coursework">Financial Management &middot; Statistics I &amp; II &middot; Financial Accounting &middot; Business Analytics &middot; Managerial Accounting &middot; Business Technology</div>
+                    <div class="chip-row">
+                        <span class="gpa-chip">CGPA &nbsp;3.4 / 4.0</span>
+                        <span class="gpa-chip">$10,000 Admission Scholarship</span>
+                        <span class="gpa-chip">$2,000 International Excellence Scholarship</span>
+                    </div>
+                    <div class="coursework">Statistics &middot; Financial Management &middot; Cost &amp; Financial Accounting &middot; Business Analytics</div>
+
+                    <div class="sub-label">Case Competitions</div>
+                    <ul class="comp-list">
+                        <li><strong>Equi-T Challenge</strong> &mdash; 1st Place, 2026</li>
+                        <li><strong>Interac U-Innovate Challenge</strong> &mdash; 4th Place, Nationwide, 2026</li>
+                    </ul>
                 </div>
 
                 <!-- Work Experience -->
                 <div class="exp-card">
-                    <div class="exp-card-label">Work Experience</div>
+                    <div class="exp-card-label">Professional Experience</div>
 
                     <div class="exp-entry">
                         <div class="exp-row">
                             <div>
-                                <div class="exp-title">Team Lead &mdash; U-Innovate Challenge</div>
-                                <div class="exp-co">Interac</div>
+                                <div class="exp-title">AML Process Engineering Intern</div>
+                                <div class="exp-co">Canadian Imperial Bank of Commerce (CIBC) &middot; Toronto, ON</div>
                             </div>
-                            <div class="exp-date">Jan 2026 &ndash; Present</div>
+                            <div class="exp-date">May 2026 &ndash; Present</div>
                         </div>
                         <ul class="exp-ul">
-                            <li>Developed an innovative solution packaging 4 features (Tap-to-Send, Pods, Family Spend Assist, Interac Identity) into one all-purpose AI agent that eases payment processing</li>
-                            <li>Designed Tap-to-Send user flows to remove manual recipient entry and built Identity verification rules to keep AI-initiated payments controlled and safe</li>
+                            <li>Completing a 16-week internship supporting enterprise anti-money laundering through data analysis, reporting, and investigative process work related to money laundering, terrorist financing, and risk</li>
+                            <li>Contributing to process improvement, data governance, and records management initiatives across rotating AML teams in a regulated banking environment</li>
                         </ul>
                     </div>
                     <hr class="exp-divider">
@@ -591,59 +692,14 @@
                     <div class="exp-entry">
                         <div class="exp-row">
                             <div>
-                                <div class="exp-title">Corrector</div>
-                                <div class="exp-co">University of Ottawa</div>
+                                <div class="exp-title">Teaching Assistant</div>
+                                <div class="exp-co">University of Ottawa &middot; Ottawa, ON</div>
                             </div>
                             <div class="exp-date">Aug 2025 &ndash; Present</div>
                         </div>
                         <ul class="exp-ul">
-                            <li>Evaluated assessments and exams for a business course with over 350 students, ensuring fairness and accuracy</li>
-                            <li>Provided constructive feedback to reinforce student understanding of business fundamentals</li>
-                        </ul>
-                    </div>
-                    <hr class="exp-divider">
-
-                    <div class="exp-entry">
-                        <div class="exp-row">
-                            <div>
-                                <div class="exp-title">Student &mdash; Financial Management</div>
-                                <div class="exp-co">Telfer School of Management</div>
-                            </div>
-                            <div class="exp-date">Sep &ndash; Dec 2025</div>
-                        </div>
-                        <ul class="exp-ul">
-                            <li>Constructed three financial statements and a DCF valuation model with sensitivity analysis on key inputs</li>
-                            <li>Assessed project viability by forecasting cash flows, estimating WACC, and evaluating NPV / IRR / payback</li>
-                        </ul>
-                    </div>
-                    <hr class="exp-divider">
-
-                    <div class="exp-entry">
-                        <div class="exp-row">
-                            <div>
-                                <div class="exp-title">Participant &mdash; EquiT Program</div>
-                                <div class="exp-co">Telfer Financial Lab</div>
-                            </div>
-                            <div class="exp-date">Sep &ndash; Dec 2025</div>
-                        </div>
-                        <ul class="exp-ul">
-                            <li>Analyzed equities using Bloomberg, FactSet, Cap IQ, Statista, Factiva, and PitchBook</li>
-                            <li>Prepared a research report using qualitative assumptions to issue buy / sell ratings</li>
-                        </ul>
-                    </div>
-                    <hr class="exp-divider">
-
-                    <div class="exp-entry">
-                        <div class="exp-row">
-                            <div>
-                                <div class="exp-title">Operations Associate</div>
-                                <div class="exp-co">Gift Better Co.</div>
-                            </div>
-                            <div class="exp-date">Nov 2024 &ndash; Apr 2025</div>
-                        </div>
-                        <ul class="exp-ul">
-                            <li>Prepared and shipped over 2,000 gift boxes for clients including Shopify, Amazon, Deloitte, and Telus</li>
-                            <li>Identified workflow improvements leading to a ~5% increase in operational efficiency</li>
+                            <li>Evaluated assessments for two business courses over two semesters with over 350 students, ensuring fairness and accuracy while collaborating with the professor and other teaching assistants to maintain consistency</li>
+                            <li>Provided constructive feedback to support student learning and reinforce understanding of business concepts</li>
                         </ul>
                     </div>
                     <hr class="exp-divider">
@@ -652,47 +708,39 @@
                         <div class="exp-row">
                             <div>
                                 <div class="exp-title">Intern</div>
-                                <div class="exp-co">Jobakor &amp; Associates Limited</div>
+                                <div class="exp-co">Jobakor &amp; Associates Limited &middot; Delta, NG</div>
                             </div>
-                            <div class="exp-date">May 2022 &ndash; Jul 2023</div>
+                            <div class="exp-date">May 2025 &ndash; Aug 2025</div>
                         </div>
                         <ul class="exp-ul">
-                            <li>Sourced and evaluated 10+ oil &amp; gas contracts from piping / fabrication to fire safety; Revenue ~$100k</li>
-                            <li>Built profitability models and increased sales volume by 5% through targeted prospecting and pipeline management</li>
+                            <li>Completed a 16-week internship sourcing and evaluating 6+ oil &amp; gas contracts from piping/fabrication to fire safety systems totaling ~$250k in FY2025 revenue; conducted due diligence on technical specifications and pricing structures</li>
+                            <li>Increased overall sales and contract volume by ~3% by implementing targeted prospecting strategies, managing the deal pipeline from sourcing to close, and strengthening client/partner relationships across the supply chain</li>
                         </ul>
+                        <div class="sub-entry">
+                            <div class="sub-entry-label">Select Transaction Experience</div>
+                            <div class="sub-entry-title">Deal Analysis &mdash; Shell Plc., Energy Infrastructure &nbsp;<span style="color:var(--text-muted);font-weight:400;font-size:12px;">(FY2025 Revenue ~$100k)</span></div>
+                            <ul class="exp-ul">
+                                <li>Built cost and profitability models by evaluating project scope, supplier/OEM pricing dynamics, and overall margin optimization; ran scenario analysis to assess contract viability and improve deal economics</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Leadership -->
+                <!-- Leadership / Extracurricular -->
                 <div class="exp-card">
-                    <div class="exp-card-label">Leadership &amp; Voluntary Experience</div>
+                    <div class="exp-card-label">Leadership &amp; Extracurricular</div>
 
                     <div class="exp-entry">
                         <div class="exp-row">
                             <div>
-                                <div class="exp-title">President, Conservation Club</div>
-                                <div class="exp-co">Atlantic Hall School</div>
+                                <div class="exp-title">Analyst</div>
+                                <div class="exp-co">Black Leaf Capital &middot; Ottawa, ON</div>
                             </div>
-                            <div class="exp-date">Jul 2020 &ndash; Jul 2023</div>
+                            <div class="exp-date">Feb 2026 &ndash; Present</div>
                         </div>
                         <ul class="exp-ul">
-                            <li>Led 25+ environmental clean-up campaigns and recycling drives, positively impacting campus sustainability</li>
-                            <li>Mentored peers in a collaborative environment that outperformed projected benchmarks</li>
-                        </ul>
-                    </div>
-                    <hr class="exp-divider">
-
-                    <div class="exp-entry">
-                        <div class="exp-row">
-                            <div>
-                                <div class="exp-title">Volunteer Teacher</div>
-                                <div class="exp-co">Bridge Nigeria</div>
-                            </div>
-                            <div class="exp-date">May 2023 &ndash; Jul 2024</div>
-                        </div>
-                        <ul class="exp-ul">
-                            <li>Taught foundational Math, Business, and English to 100+ primary school students in underserved communities</li>
-                            <li>Gained hands-on experience with student assessment and classroom management</li>
+                            <li>Selected as 1 of 10 analysts for the 2026 cohort of a sponsored Black student-run long-only equities fund covering the industrials sector and presenting valuation analyses to portfolio managers</li>
+                            <li>Authored equity research reports (e.g. WSP Global) by building integrated 3-statement financial models, DCF valuations with WACC-based discount rates, and trading RV analysis across peer groups to generate buy/sell recommendations and support portfolio allocation decisions</li>
                         </ul>
                     </div>
                 </div>
@@ -707,31 +755,59 @@
                 <div class="bento">
                     <div class="bento-card w2">
                         <div class="bento-label">Technical Skills</div>
-                        <div class="tags">
-                            <span class="tag">Financial Modeling (DCF, LBO &amp; Comps)</span>
-                            <span class="tag">Equity Valuation</span>
-                            <span class="tag">Financial Analysis</span>
-                            <span class="tag">Project Management</span>
-                            <span class="tag">Microsoft 365</span>
-                            <span class="tag">Excel (Intermediate)</span>
-                            <span class="tag">Data Analysis</span>
-                            <span class="tag">SQL</span>
-                            <span class="tag">Tableau</span>
-                            <span class="tag">Power BI</span>
-                            <span class="tag">Python (Basic)</span>
-                            <span class="tag">Bloomberg Terminal</span>
-                            <span class="tag">FactSet</span>
-                            <span class="tag">Cap IQ</span>
+
+                        <div class="skill-group">
+                            <div class="skill-group-label">Modeling &amp; Analysis</div>
+                            <div class="tags">
+                                <span class="tag">Financial Modeling (DCF, LBO &amp; RV)</span>
+                                <span class="tag">Equity Valuation</span>
+                                <span class="tag">Financial Analysis</span>
+                                <span class="tag">3-Statement Modeling</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-label">Research Platforms</div>
+                            <div class="tags">
+                                <span class="tag">Bloomberg</span>
+                                <span class="tag">FactSet</span>
+                                <span class="tag">Capital IQ</span>
+                                <span class="tag">PitchBook</span>
+                                <span class="tag">EDGAR</span>
+                                <span class="tag">SEDAR+</span>
+                                <span class="tag">Factiva</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-label">Data &amp; Tools</div>
+                            <div class="tags">
+                                <span class="tag">Excel (Modeling &amp; Data Analysis)</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Tableau</span>
+                                <span class="tag">Power BI</span>
+                                <span class="tag">Python (NumPy, Matplotlib, yfinance)</span>
+                                <span class="tag">MS Office</span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="bento-card">
                         <div class="bento-label">Certifications</div>
-                        <ul class="cert-list">
-                            <li>Bloomberg Market Concepts (BMC)</li>
-                            <li>Microsoft Business Analysis (MBC)</li>
-                            <li>Canadian Securities Course <span style="font-size:12px;opacity:.7;">(In Progress)</span></li>
-                        </ul>
+                        <div class="cert-stack">
+                            <div class="cert-row">
+                                <div class="cert-name">Canadian Securities Course</div>
+                                <span class="cert-status status-progress">In Progress</span>
+                            </div>
+                            <div class="cert-row">
+                                <div class="cert-name">Bloomberg Market Concepts</div>
+                                <span class="cert-status status-done">Completed</span>
+                            </div>
+                            <div class="cert-row">
+                                <div class="cert-name">Bloomberg Finance Fundamentals</div>
+                                <span class="cert-status status-done">Completed</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="bento-card w2">
@@ -750,7 +826,7 @@
 
                     <div class="bento-card">
                         <div class="bento-label">Currently Pursuing</div>
-                        <p class="target-text">Targeting roles in <strong>capital markets</strong>, wealth management, and equity research. Open to summer analyst and co-op opportunities for 2026.</p>
+                        <p class="target-text">Interested in <strong>risk management</strong> and <strong>capital markets</strong> roles. Available for <strong>Summer 2027</strong> analyst and co-op opportunities.</p>
                     </div>
                 </div>
             </div>
@@ -808,7 +884,7 @@
                 <div class="contact-inner">
                     <div class="eyebrow">Get in Touch</div>
                     <h2 class="sec-title">Let's Connect</h2>
-                    <p class="contact-desc">I'm actively seeking opportunities in wealth management, private markets, and equity research. If you'd like to discuss finance, investments, or potential opportunities — feel free to reach out.</p>
+                    <p class="contact-desc">I'm actively seeking Summer 2027 opportunities in risk management and capital markets. If you'd like to discuss finance, investments, or potential roles — feel free to reach out.</p>
                     <a href="mailto:oobuw021@uottawa.ca" class="btn-gold">Send me an Email</a>
                     <div class="social-row">
                         <a href="https://www.linkedin.com/in/meroob" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
