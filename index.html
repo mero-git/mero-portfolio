@@ -8,891 +8,901 @@
     <meta property="og:title" content="Mero Obuwoma - Finance Student & Aspiring Analyst">
     <meta property="og:description" content="Finance student at the University of Ottawa with experience in financial modeling, equity research, and data-driven analysis.">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#faf9f6">
+    <meta name="theme-color" content="#0b0b14">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-primary: #faf9f6;
-            --text-primary: #1a1a1a;
-            --text-secondary: #666666;
-            --accent: #2d2d2d;
-            --border: #e5e5e5;
-            --hover-bg: #f5f5f5;
+            --bg:           #0b0b14;
+            --bg-card:      #11111e;
+            --text:         #f0f0f0;
+            --text-muted:   #8888a0;
+            --accent:       #c9a84c;
+            --accent-dim:   rgba(201,168,76,0.12);
+            --border:       #1e1e30;
+            --border-acc:   rgba(201,168,76,0.28);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.7;
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
+        /* ── Background layers ── */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
 
-        header {
-            padding: 48px 0 24px;
-            position: sticky;
-            top: 0;
-            background-color: var(--bg-primary);
-            z-index: 100;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        header.scrolled {
-            border-bottom-color: var(--border);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .logo {
-            font-weight: 600;
-            font-size: 18px;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 400;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        section {
-            padding: 80px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section:nth-child(2) { animation-delay: 0.1s; }
-        section:nth-child(3) { animation-delay: 0.2s; }
-        section:nth-child(4) { animation-delay: 0.3s; }
-        section:nth-child(5) { animation-delay: 0.4s; }
-
-        .hero {
-            padding: 120px 0 100px;
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .hero-text h1 {
-            font-size: 72px;
-            font-weight: 600;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-            color: var(--text-primary);
-        }
-
-        .hero-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 600;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-            color: var(--text-primary);
-        }
-
-        .hero .subtitle {
-            font-size: 20px;
-            color: var(--text-secondary);
-            font-weight: 400;
-            line-height: 1.6;
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .hero-links {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid var(--accent);
-        }
-
-        .btn:hover {
-            background-color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--hover-bg);
-            border-color: var(--text-primary);
-        }
-
-        .section-header {
-            margin-bottom: 48px;
-        }
-
-        .section-title {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        h2 {
-            font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 48px;
-            align-items: start;
-        }
-
-        .about-text p {
-            font-size: 17px;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .about-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        .about-image {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .experience-list {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .experience-card {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            transition: all 0.3s ease;
-            background-color: white;
-        }
-
-        .experience-card:hover {
-            border-color: var(--text-primary);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            gap: 16px;
-        }
-
-        .experience-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .experience-company {
-            font-size: 15px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .experience-date {
-            font-size: 14px;
-            color: var(--text-secondary);
-            white-space: nowrap;
-        }
-
-        .experience-description {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        .experience-description ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 12px;
-        }
-
-        .experience-description li {
-            padding-left: 20px;
-            position: relative;
-            margin-bottom: 8px;
-        }
-
-        .experience-description li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--text-primary);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .project-card {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 28px;
-            background-color: white;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .project-card:hover {
-            border-color: var(--text-primary);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-        }
-
-        .project-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            background-color: var(--hover-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .project-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .project-description {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 32px;
-        }
-
-        .skill-category h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            padding: 8px 16px;
-            background-color: var(--hover-bg);
-            border-radius: 6px;
-            font-size: 14px;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-
-        .contact-content {
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .contact-content p {
-            font-size: 17px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-top: 32px;
-        }
-
-        .social-link {
-            padding: 10px 20px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 14px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .social-link:hover {
-            border-color: var(--text-primary);
-            color: var(--text-primary);
-            background-color: var(--hover-bg);
-        }
-
-        footer {
-            padding: 48px 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        .resume-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 24px;
-        }
-
+        /* ── Scroll bar ── */
         .scroll-indicator {
             position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--accent);
+            top: 0; left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
             width: 0%;
             z-index: 1000;
             transition: width 0.1s ease;
         }
 
+        /* ── Skip link ── */
         .skip-link {
             position: absolute;
-            top: -40px;
-            left: 0;
+            top: -40px; left: 0;
             background: var(--accent);
-            color: white;
+            color: #000;
             padding: 8px 16px;
             z-index: 9999;
             font-size: 14px;
             text-decoration: none;
-            border-radius: 0 0 6px 0;
-            transition: top 0.2s ease;
+            transition: top 0.2s;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* ── Navigation ── */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid transparent;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        header.scrolled {
+            background: rgba(11,11,20,0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom-color: var(--border);
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ── Layout ── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 48px;
+            width: 100%;
         }
 
-        .skip-link:focus {
-            top: 0;
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 130px 0 100px;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .hero-eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero-name {
+            font-size: 68px;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        .hero-name span { color: var(--accent); }
+        .hero-sub {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-image-wrap { display: flex; justify-content: center; }
+        .hero-image {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 16px;
+            border: 1px solid var(--border-acc);
+            box-shadow: 0 0 80px rgba(201,168,76,0.07), 0 20px 60px rgba(0,0,0,0.5);
         }
 
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
+        /* ── Buttons ── */
+        .btn-gold {
+            display: inline-block;
+            padding: 13px 28px;
+            background: var(--accent);
+            color: #000;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            border-radius: 4px;
+            letter-spacing: 0.02em;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-gold:hover { background: #dab85c; transform: translateY(-2px); }
 
-            .hero-text h1 {
-                font-size: 48px;
-            }
+        .btn-ghost {
+            display: inline-block;
+            padding: 13px 28px;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 13px;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            letter-spacing: 0.02em;
+            transition: border-color 0.2s, color 0.2s, transform 0.2s;
+        }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-            .hero-image {
-                max-width: 280px;
-                margin: 0 auto;
-            }
+        /* ── Section headers ── */
+        .eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .sec-title {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 52px;
+            color: var(--text);
+        }
 
-            .hero h1 {
-                font-size: 40px;
-            }
+        /* ── Experience cards ── */
+        .exp-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .exp-card:hover {
+            border-color: var(--border-acc);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+        }
+        .exp-card-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .exp-entry { margin-bottom: 28px; }
+        .exp-entry:last-child { margin-bottom: 0; }
+        .exp-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+        .exp-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 3px;
+        }
+        .exp-co {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .exp-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .exp-ul {
+            list-style: none;
+            padding: 0;
+        }
+        .exp-ul li {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.75;
+            padding-left: 18px;
+            position: relative;
+            margin-bottom: 5px;
+        }
+        .exp-ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 11px;
+            line-height: 2;
+        }
+        .exp-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+        .gpa-chip {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid var(--border-acc);
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .coursework {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
 
-            .hero .subtitle {
-                font-size: 18px;
-            }
+        /* ── Bento / Skills ── */
+        .bento {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .bento-card:hover {
+            border-color: var(--border-acc);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .bento-card.w2 { grid-column: span 2; }
+        .bento-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag {
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+        .tag:hover { border-color: var(--border-acc); color: var(--text); background: var(--accent-dim); }
+        .cert-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .cert-list li {
+            font-size: 14px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cert-list li::before {
+            content: "";
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+        .plum-link {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 10px 20px;
+            border: 1px solid var(--border-acc);
+            border-radius: 4px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .plum-link:hover { background: var(--accent-dim); }
+        .target-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+        .target-text strong { color: var(--text); }
 
-            section {
-                padding: 60px 0;
-            }
+        /* ── Bookshelf ── */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .book-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .book-card:hover {
+            border-color: var(--border-acc);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+        }
+        .book-status {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .s-read    { color: var(--accent); }
+        .s-reading { color: #6b9e6b; }
+        .book-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .book-author {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .stars { display: flex; gap: 3px; }
+        .s  { font-size: 15px; }
+        .sf { color: var(--accent); }
+        .sh { color: var(--accent); opacity: 0.55; }
+        .se { color: var(--border); }
+        .reading-badge {
+            display: inline-block;
+            font-size: 11px;
+            color: #6b9e6b;
+            background: rgba(107,158,107,0.1);
+            border: 1px solid rgba(107,158,107,0.3);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
 
-            .hero {
-                padding: 80px 0 60px;
-            }
+        /* ── Contact ── */
+        .contact-inner { max-width: 580px; }
+        .contact-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 36px;
+        }
+        .social-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .social-link {
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .social-link:hover { border-color: var(--accent); color: var(--accent); }
 
-            .nav-links {
-                gap: 20px;
-            }
+        /* ── Footer ── */
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 28px 48px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
 
-            .nav-links a {
-                font-size: 14px;
-            }
-
-            .experience-header {
-                flex-direction: column;
-            }
-
-            .experience-date {
-                white-space: normal;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h2 {
-                font-size: 28px;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                max-width: 200px;
-                margin: 0 auto;
-            }
+        /* ── Responsive ── */
+        @media (max-width: 960px) {
+            header { padding: 18px 24px; }
+            .container { padding: 0 24px; }
+            .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+            .hero-image-wrap { order: -1; }
+            .hero-image { max-width: 240px; }
+            .hero-name { font-size: 48px; }
+            .hero-sub { margin: 0 auto 40px; }
+            .hero-btns { justify-content: center; }
+            .bento { grid-template-columns: 1fr; }
+            .bento-card.w2 { grid-column: span 1; }
+            .books-grid { grid-template-columns: repeat(2, 1fr); }
+            .sec-title { font-size: 30px; }
+            .nav-links { gap: 20px; }
+        }
+        @media (max-width: 480px) {
+            .books-grid { grid-template-columns: 1fr; }
+            .hero-name { font-size: 38px; }
+            footer { flex-direction: column; gap: 8px; text-align: center; }
         }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grid-bg"></div>
+    <canvas id="bg-canvas"></canvas>
     <div class="scroll-indicator" id="scrollIndicator"></div>
 
     <header id="header">
-        <nav>
-            <a href="#" class="logo">Mero Obuwoma</a>
-            <ul class="nav-links">
-                <li><a href="#resume">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <a href="#" class="logo">Mero <span>O.</span></a>
+        <ul class="nav-links">
+            <li><a href="#resume">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#reads">Reading</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </header>
 
-    <main class="container" id="main-content">
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Mero Obuwoma</h1>
+    <main id="main-content">
+
+        <!-- ── HERO ── -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-inner">
+                    <div>
+                        <div class="hero-eyebrow">Finance &amp; Capital Markets</div>
+                        <h1 class="hero-name">Mero<br>Obuwoma<span>.</span></h1>
+                        <p class="hero-sub">Second-year Bachelor of Commerce student at the University of Ottawa, specializing in Finance and Business Technology Management — with a strong interest in private wealth management, private equity, and equity research.</p>
+                        <div class="hero-btns">
+                            <a href="#contact" class="btn-gold">Get in Touch</a>
+                            <a href="#resume" class="btn-ghost">View Experience</a>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrap">
+                        <img src="profile-photo.jpg" alt="Mero Obuwoma" class="hero-image">
+                    </div>
                 </div>
-                <div class="hero-image-container">
-                    <img src="profile-photo.jpg" alt="Mero Obuwoma" class="hero-image">
-                </div>
-            </div>
-            <p class="subtitle">
-                Second-year Bachelor of Commerce student at the University of Ottawa, specializing in Finance and Business Technology Management, with a strong interest in private wealth management and private equity, and I enjoy using financial modeling and data-driven insights to better understand markets and investment opportunities.
-            </p>
-            <div class="hero-links">
-                <a href="#contact" class="btn">Get in Touch</a>
-                <a href="#resume" class="btn btn-outline">View Experience</a>
             </div>
         </section>
 
-        <!-- RESUME SECTION -->
-        <section id="resume" style="padding-bottom: 20px;">
-            <div class="section-header">
-                <h2>Professional Summary</h2>
-            </div>
-            
-            <!-- Education -->
-            <div class="experience-card" style="margin-bottom: 32px;">
-                <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Education</h3>
-                
-                <div>
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Bachelor's Degree of Commerce</div>
-                            <div class="experience-company">University of Ottawa</div>
-                            <div class="experience-company" style="font-style: italic; margin-top: 4px;">Major in Finance and Business Technology Management</div>
-                        </div>
-                        <div class="experience-date">Present</div>
-                    </div>
-                    <div class="experience-description">
-                        <p style="margin-bottom: 8px;"><strong>Cumulative GPA:</strong> 3.4/4</p>
-                        <p><strong>Relevant Coursework:</strong> Financial Management, Statistics I&II, Financial Accounting, Business Analytics, Managerial Accounting, & Business Technology</p>
-                    </div>
-                </div>
-            </div>
+        <!-- ── EXPERIENCE ── -->
+        <section id="resume">
+            <div class="container">
+                <div class="eyebrow">Background</div>
+                <h2 class="sec-title">Professional Summary</h2>
 
-            <!-- Experience -->
-            <div class="experience-card" style="margin-bottom: 24px;">
-                <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Work Experience</h3>
-
-                <!-- Corrector Role -->
-                <div style="margin-bottom: 32px;">
-                    <div class="experience-header">
+                <!-- Education -->
+                <div class="exp-card">
+                    <div class="exp-card-label">Education</div>
+                    <div class="exp-row">
                         <div>
-                            <div class="experience-title">Corrector</div>
-                            <div class="experience-company">University of Ottawa</div>
+                            <div class="exp-title">Bachelor's Degree of Commerce</div>
+                            <div class="exp-co">University of Ottawa &mdash; Major in Finance &amp; Business Technology Management</div>
                         </div>
-                        <div class="experience-date">Aug 2025 – Present</div>
+                        <div class="exp-date">Present</div>
                     </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Evaluated assessments and exams for business course with over 350 students, ensuring fairness and accuracy while collaborating with the professor and other teaching assistants to maintain consistency</li>
-                            <li>Provide constructive feedback to support student learning and reinforce understanding of business fundamentals</li>
-                        </ul>
-                    </div>
+                    <div class="gpa-chip">GPA &nbsp;3.4 / 4.0</div>
+                    <div class="coursework">Financial Management &middot; Statistics I &amp; II &middot; Financial Accounting &middot; Business Analytics &middot; Managerial Accounting &middot; Business Technology</div>
                 </div>
 
-                <!-- Telfer Financial Management -->
-                <div style="margin-bottom: 32px;">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Student - Financial Management</div>
-                            <div class="experience-company">Telfer School of Management</div>
-                        </div>
-                        <div class="experience-date">Sep 2025 – Dec 2025</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Constructed the three financial statements and discounted cash flow (DCF) valuation model with assumptions for revenue/cost drivers, discount rate, and terminal value; performed sensitivity analysis on key inputs</li>
-                            <li>Learned about equities/bonds, valuation, and corporate finance, that gave me a holistic understanding of the current stock market</li>
-                            <li>Assessed project viability by forecasting cash flows, estimating cost of capital (WACC), and evaluating NPV/IRR/payback to support an investment recommendation</li>
-                        </ul>
-                    </div>
-                </div>
+                <!-- Work Experience -->
+                <div class="exp-card">
+                    <div class="exp-card-label">Work Experience</div>
 
-                <!-- Telfer Financial Lab -->
-                <div style="margin-bottom: 32px;">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Participant - EquiT Program</div>
-                            <div class="experience-company">Telfer Financial Lab</div>
+                    <div class="exp-entry">
+                        <div class="exp-row">
+                            <div>
+                                <div class="exp-title">Team Lead &mdash; U-Innovate Challenge</div>
+                                <div class="exp-co">Interac</div>
+                            </div>
+                            <div class="exp-date">Jan 2026 &ndash; Present</div>
                         </div>
-                        <div class="experience-date">Sep 2025 – Dec 2025</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Analyzed equities and its markets using databases including Bloomberg, FactSet, Cap IQ, Statista, Factiva and PitchBook</li>
-                            <li>Prepared a quality research report using data from prior databases and techniques learnt from this program, using qualitative assumptions to give buy/sell ratings</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Interac Challenge -->
-                <div style="margin-bottom: 32px;">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Team Lead - U-Innovate Challenge</div>
-                            <div class="experience-company">Interac</div>
-                        </div>
-                        <div class="experience-date">Jan 2026 – Present</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
+                        <ul class="exp-ul">
                             <li>Developed an innovative solution packaging 4 features (Tap-to-Send, Pods, Family Spend Assist, Interac Identity) into one all-purpose AI agent that eases payment processing</li>
-                            <li>Worked in a team to design a Tap-to-Send user flows to remove manual recipient entry and reduce payment friction and built an Identity verification rules to keep AI-initiated payments controlled and safe</li>
+                            <li>Designed Tap-to-Send user flows to remove manual recipient entry and built Identity verification rules to keep AI-initiated payments controlled and safe</li>
+                        </ul>
+                    </div>
+                    <hr class="exp-divider">
+
+                    <div class="exp-entry">
+                        <div class="exp-row">
+                            <div>
+                                <div class="exp-title">Corrector</div>
+                                <div class="exp-co">University of Ottawa</div>
+                            </div>
+                            <div class="exp-date">Aug 2025 &ndash; Present</div>
+                        </div>
+                        <ul class="exp-ul">
+                            <li>Evaluated assessments and exams for a business course with over 350 students, ensuring fairness and accuracy</li>
+                            <li>Provided constructive feedback to reinforce student understanding of business fundamentals</li>
+                        </ul>
+                    </div>
+                    <hr class="exp-divider">
+
+                    <div class="exp-entry">
+                        <div class="exp-row">
+                            <div>
+                                <div class="exp-title">Student &mdash; Financial Management</div>
+                                <div class="exp-co">Telfer School of Management</div>
+                            </div>
+                            <div class="exp-date">Sep &ndash; Dec 2025</div>
+                        </div>
+                        <ul class="exp-ul">
+                            <li>Constructed three financial statements and a DCF valuation model with sensitivity analysis on key inputs</li>
+                            <li>Assessed project viability by forecasting cash flows, estimating WACC, and evaluating NPV / IRR / payback</li>
+                        </ul>
+                    </div>
+                    <hr class="exp-divider">
+
+                    <div class="exp-entry">
+                        <div class="exp-row">
+                            <div>
+                                <div class="exp-title">Participant &mdash; EquiT Program</div>
+                                <div class="exp-co">Telfer Financial Lab</div>
+                            </div>
+                            <div class="exp-date">Sep &ndash; Dec 2025</div>
+                        </div>
+                        <ul class="exp-ul">
+                            <li>Analyzed equities using Bloomberg, FactSet, Cap IQ, Statista, Factiva, and PitchBook</li>
+                            <li>Prepared a research report using qualitative assumptions to issue buy / sell ratings</li>
+                        </ul>
+                    </div>
+                    <hr class="exp-divider">
+
+                    <div class="exp-entry">
+                        <div class="exp-row">
+                            <div>
+                                <div class="exp-title">Operations Associate</div>
+                                <div class="exp-co">Gift Better Co.</div>
+                            </div>
+                            <div class="exp-date">Nov 2024 &ndash; Apr 2025</div>
+                        </div>
+                        <ul class="exp-ul">
+                            <li>Prepared and shipped over 2,000 gift boxes for clients including Shopify, Amazon, Deloitte, and Telus</li>
+                            <li>Identified workflow improvements leading to a ~5% increase in operational efficiency</li>
+                        </ul>
+                    </div>
+                    <hr class="exp-divider">
+
+                    <div class="exp-entry">
+                        <div class="exp-row">
+                            <div>
+                                <div class="exp-title">Intern</div>
+                                <div class="exp-co">Jobakor &amp; Associates Limited</div>
+                            </div>
+                            <div class="exp-date">May 2022 &ndash; Jul 2023</div>
+                        </div>
+                        <ul class="exp-ul">
+                            <li>Sourced and evaluated 10+ oil &amp; gas contracts from piping / fabrication to fire safety; Revenue ~$100k</li>
+                            <li>Built profitability models and increased sales volume by 5% through targeted prospecting and pipeline management</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Gift Better Co -->
-                <div style="margin-bottom: 32px;">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Operations Associate</div>
-                            <div class="experience-company">Gift Better Co.</div>
+                <!-- Leadership -->
+                <div class="exp-card">
+                    <div class="exp-card-label">Leadership &amp; Voluntary Experience</div>
+
+                    <div class="exp-entry">
+                        <div class="exp-row">
+                            <div>
+                                <div class="exp-title">President, Conservation Club</div>
+                                <div class="exp-co">Atlantic Hall School</div>
+                            </div>
+                            <div class="exp-date">Jul 2020 &ndash; Jul 2023</div>
                         </div>
-                        <div class="experience-date">Nov 2024 – Apr 2025</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Prepared and shipped over 2,000 gift boxes for clients like Shopify, Amazon, Deloitte, Telus and more</li>
-                            <li>Managed and logged inventory and ensured smooth fulfillment operations in a fast-paced warehouse setting by tracking supplies, completing daily project logs, and maintaining a clean, organized work environment</li>
-                            <li>Identified workflow improvements, that lead to an increase in operational efficiency by about 5%</li>
+                        <ul class="exp-ul">
+                            <li>Led 25+ environmental clean-up campaigns and recycling drives, positively impacting campus sustainability</li>
+                            <li>Mentored peers in a collaborative environment that outperformed projected benchmarks</li>
                         </ul>
                     </div>
-                </div>
+                    <hr class="exp-divider">
 
-                <!-- Jobakor & Associates -->
-                <div>
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Intern</div>
-                            <div class="experience-company">Jobakor & Associates Limited</div>
+                    <div class="exp-entry">
+                        <div class="exp-row">
+                            <div>
+                                <div class="exp-title">Volunteer Teacher</div>
+                                <div class="exp-co">Bridge Nigeria</div>
+                            </div>
+                            <div class="exp-date">May 2023 &ndash; Jul 2024</div>
                         </div>
-                        <div class="experience-date">May 2022 – Jul 2023</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Sourced and evaluated 10+ oil & gas contracts from piping/fabrication to fire safety systems, Select Transaction Experience: Sell-side, Energy, Deal Analyst, Revenue~($100k)</li>
-                            <li>Built models for cost and profitability analysis by analyzing the scope, supplier/OEM pricing, logistics and more</li>
-                            <li>Increased sales and contract volume by 5% through targeted prospecting, pipeline management, and client/partner relationship building</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Leadership & Voluntary Experience -->
-            <div class="experience-card" style="margin-bottom: 24px;">
-                <h3 style="font-size: 20px; margin-bottom: 24px; color: var(--text-primary);">Leadership & Voluntary Experience</h3>
-
-                <!-- Conservation Club -->
-                <div style="margin-bottom: 32px;">
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">President, Conservation Club</div>
-                            <div class="experience-company">Atlantic Hall School</div>
-                        </div>
-                        <div class="experience-date">Jul 2020 – Jul 2023</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Led over 25 environmental clean-up campaigns, school-wide environmental initiatives, recycling drives and other events, positively impacting campus sustainability</li>
-                            <li>Mentored peers, fostering a collaborative and inclusive environment which lead to outperformance of our projected benchmarks</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Bridge Nigeria -->
-                <div>
-                    <div class="experience-header">
-                        <div>
-                            <div class="experience-title">Volunteer Teacher</div>
-                            <div class="experience-company">Bridge Nigeria</div>
-                        </div>
-                        <div class="experience-date">May 2023 – Jul 2024</div>
-                    </div>
-                    <div class="experience-description">
-                        <ul>
-                            <li>Fostered to a supportive, motivating learning environment for over 100 students across multiple classrooms, and gained hands-on experience with student assessment and classroom management</li>
-                            <li>Taught foundational Math, Business and English to primary school students in underserved communities as part of Bridge Nigeria's mission to deliver high-quality, affordable and tech-enabled education</li>
+                        <ul class="exp-ul">
+                            <li>Taught foundational Math, Business, and English to 100+ primary school students in underserved communities</li>
+                            <li>Gained hands-on experience with student assessment and classroom management</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SKILLS SECTION -->
+        <!-- ── SKILLS ── -->
         <section id="skills">
-            <div class="section-header">
-                <div class="section-title">Skills & Expertise</div>
-            </div>
-            <div class="skills-grid">
-                <!-- Finance & Technical Skills -->
-                <div class="skill-category">
-                    <h3>Technical Skills</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Financial Modeling (DCF, LBO & Comps)</span>
-                        <span class="skill-tag">Equity Valuation</span>
-                        <span class="skill-tag">Financial Analysis</span>
-                        <span class="skill-tag">Project Management</span>
-                        <span class="skill-tag">Microsoft 365</span>
-                        <span class="skill-tag">Excel (Intermediate)</span>
-                        <span class="skill-tag">Data Analysis</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Python (Basic)</span>
-                        <span class="skill-tag">HTML (Basic)</span>
-                        <span class="skill-tag">Bloomberg Terminal</span>
-                        <span class="skill-tag">FactSet</span>
-                        <span class="skill-tag">Cap IQ</span>
+            <div class="container">
+                <div class="eyebrow">Expertise</div>
+                <h2 class="sec-title">Skills &amp; Tools</h2>
+                <div class="bento">
+                    <div class="bento-card w2">
+                        <div class="bento-label">Technical Skills</div>
+                        <div class="tags">
+                            <span class="tag">Financial Modeling (DCF, LBO &amp; Comps)</span>
+                            <span class="tag">Equity Valuation</span>
+                            <span class="tag">Financial Analysis</span>
+                            <span class="tag">Project Management</span>
+                            <span class="tag">Microsoft 365</span>
+                            <span class="tag">Excel (Intermediate)</span>
+                            <span class="tag">Data Analysis</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Tableau</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Python (Basic)</span>
+                            <span class="tag">Bloomberg Terminal</span>
+                            <span class="tag">FactSet</span>
+                            <span class="tag">Cap IQ</span>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Soft Skills -->
-                <div class="skill-category">
-                    <h3>Professional Skills</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Communication</span>
-                        <span class="skill-tag">Innovation</span>
-                        <span class="skill-tag">Adaptability</span>
-                        <span class="skill-tag">Decision Making</span>
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Leadership</span>
-                        <span class="skill-tag">Critical Thinking</span>
+                    <div class="bento-card">
+                        <div class="bento-label">Certifications</div>
+                        <ul class="cert-list">
+                            <li>Bloomberg Market Concepts (BMC)</li>
+                            <li>Microsoft Business Analysis (MBC)</li>
+                            <li>Canadian Securities Course <span style="font-size:12px;opacity:.7;">(In Progress)</span></li>
+                        </ul>
                     </div>
-                    <div style="margin-top: 16px;">
-                        <a href="https://secure.plum.io/en/p/tj4s-NOC-6EiJ_lVlJl9Jw" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View Plum Top Skill Profile</a>
-                    </div>
-                </div>
 
-                <!-- Certifications -->
-                <div class="skill-category">
-                    <h3>Certifications</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Bloomberg Market Concepts (BMC)</span>
-                        <span class="skill-tag">Microsoft Business Analysis (MBC)</span>
-                        <span class="skill-tag">Canadian Securities Course (In Progress)</span>
+                    <div class="bento-card w2">
+                        <div class="bento-label">Professional Skills</div>
+                        <div class="tags">
+                            <span class="tag">Communication</span>
+                            <span class="tag">Innovation</span>
+                            <span class="tag">Adaptability</span>
+                            <span class="tag">Decision Making</span>
+                            <span class="tag">Problem Solving</span>
+                            <span class="tag">Leadership</span>
+                            <span class="tag">Critical Thinking</span>
+                        </div>
+                        <a href="https://secure.plum.io/en/p/tj4s-NOC-6EiJ_lVlJl9Jw" class="plum-link" target="_blank" rel="noopener noreferrer">View Plum Skill Profile &rarr;</a>
+                    </div>
+
+                    <div class="bento-card">
+                        <div class="bento-label">Currently Pursuing</div>
+                        <p class="target-text">Targeting roles in <strong>capital markets</strong>, wealth management, and equity research. Open to summer analyst and co-op opportunities for 2026.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT SECTION -->
+        <!-- ── READING ── -->
+        <section id="reads">
+            <div class="container">
+                <div class="eyebrow">What I'm Reading</div>
+                <h2 class="sec-title">Bookshelf</h2>
+                <div class="books-grid">
+                    <div class="book-card">
+                        <div class="book-status s-read">Read</div>
+                        <div class="book-title">The Psychology of Money</div>
+                        <div class="book-author">Morgan Housel</div>
+                        <div class="stars">
+                            <span class="s sf">★</span>
+                            <span class="s sf">★</span>
+                            <span class="s sf">★</span>
+                            <span class="s sf">★</span>
+                            <span class="s sh">★</span>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-status s-read">Read</div>
+                        <div class="book-title">Atomic Habits</div>
+                        <div class="book-author">James Clear</div>
+                        <div class="stars">
+                            <span class="s sf">★</span>
+                            <span class="s sf">★</span>
+                            <span class="s sf">★</span>
+                            <span class="s sf">★</span>
+                            <span class="s se">★</span>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-status s-reading">Currently Reading</div>
+                        <div class="book-title">Letters from a Stoic</div>
+                        <div class="book-author">Lucius Seneca</div>
+                        <span class="reading-badge">In progress</span>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-status s-reading">Currently Reading</div>
+                        <div class="book-title">Making It Big</div>
+                        <div class="book-author">Femi Otedola</div>
+                        <span class="reading-badge">In progress</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CONTACT ── -->
         <section id="contact">
-            <div class="section-header">
-                <div class="section-title">Get in Touch</div>
-            </div>
-            <div class="contact-content">
-                <p>
-                    I'm actively seeking opportunities in wealth management, private markets, and equity research. 
-                    If you'd like to discuss finance, investments, or potential opportunities, feel free to reach out.
-                </p>
-                <a href="mailto:oobuw021@uottawa.ca" class="btn">Send me an Email</a>
-                
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/meroob" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/mero-git" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <span>GitHub</span>
-                    </a>
+            <div class="container">
+                <div class="contact-inner">
+                    <div class="eyebrow">Get in Touch</div>
+                    <h2 class="sec-title">Let's Connect</h2>
+                    <p class="contact-desc">I'm actively seeking opportunities in wealth management, private markets, and equity research. If you'd like to discuss finance, investments, or potential opportunities — feel free to reach out.</p>
+                    <a href="mailto:oobuw021@uottawa.ca" class="btn-gold">Send me an Email</a>
+                    <div class="social-row">
+                        <a href="https://www.linkedin.com/in/meroob" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/mero-git" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer>
-        <div class="container">
-            <p>Built by Mero Obuwoma © 2026</p>
-        </div>
+        <span>Mero Obuwoma</span>
+        <span>Built with care &copy; 2026</span>
     </footer>
 
     <script>
-        // Smooth scroll progress indicator
-        window.addEventListener('scroll', () => {
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            document.getElementById('scrollIndicator').style.width = scrolled + '%';
-        });
+        /* ── Particle system ── */
+        const canvas = document.getElementById('bg-canvas');
+        const ctx    = canvas.getContext('2d');
+        let mouse    = { x: -9999, y: -9999 };
 
-        // Header background on scroll
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        function resize() {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+        class Particle {
+            constructor() { this.reset(true); }
+            reset(rand) {
+                this.x  = rand ? Math.random() * window.innerWidth  : (Math.random() < 0.5 ? 0 : window.innerWidth);
+                this.y  = rand ? Math.random() * window.innerHeight : Math.random() * window.innerHeight;
+                this.vx = (Math.random() - 0.5) * 0.28;
+                this.vy = (Math.random() - 0.5) * 0.28;
+                this.r  = Math.random() * 1.4 + 0.4;
+                this.a  = Math.random() * 0.35 + 0.08;
             }
-        });
+            update() {
+                const dx = mouse.x - this.x, dy = mouse.y - this.y;
+                const d  = Math.hypot(dx, dy);
+                if (d < 160) { this.vx += dx * 0.00006; this.vy += dy * 0.00006; }
+                this.vx *= 0.992; this.vy *= 0.992;
+                this.x  += this.vx; this.y  += this.vy;
+                if (this.x < -10 || this.x > window.innerWidth  + 10 ||
+                    this.y < -10 || this.y > window.innerHeight + 10) this.reset(false);
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(201,168,76,${this.a})`;
+                ctx.fill();
+            }
+        }
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        const particles = Array.from({ length: 65 }, () => new Particle());
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        function drawLines() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const d = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+                    if (d < 130) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(201,168,76,${0.07 * (1 - d / 130)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
                 }
-            });
-        }, observerOptions);
+            }
+        }
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+        (function loop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            drawLines();
+            requestAnimationFrame(loop);
+        })();
+
+        /* ── Scroll progress + header ── */
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scrollIndicator').style.width = (window.scrollY / h * 100) + '%';
+            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        /* ── Fade-in on scroll ── */
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.07 });
+        document.querySelectorAll('section').forEach(s => io.observe(s));
     </script>
 </body>
 </html>
