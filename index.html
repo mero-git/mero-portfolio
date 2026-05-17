@@ -496,13 +496,40 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 24px;
+            overflow: hidden;
             transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         .book-card:hover {
             border-color: var(--border-acc);
-            transform: translateY(-4px);
-            box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 48px rgba(0,0,0,0.45);
+        }
+        .book-cover-wrap {
+            width: 100%;
+            aspect-ratio: 2/3;
+            overflow: hidden;
+            background: #0d0d1a;
+            flex-shrink: 0;
+        }
+        .book-cover-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .book-card:hover .book-cover-wrap img {
+            transform: scale(1.04);
+        }
+        .book-info {
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
         }
         .book-status {
             font-size: 10px;
@@ -596,7 +623,7 @@
             .nav-links { gap: 20px; }
         }
         @media (max-width: 480px) {
-            .books-grid { grid-template-columns: 1fr; }
+            .books-grid { grid-template-columns: repeat(2, 1fr); }
             .hero-name { font-size: 38px; }
             footer { flex-direction: column; gap: 8px; text-align: center; }
         }
@@ -839,40 +866,60 @@
                 <h2 class="sec-title">Bookshelf</h2>
                 <div class="books-grid">
                     <div class="book-card">
-                        <div class="book-status s-read">Read</div>
-                        <div class="book-title">The Psychology of Money</div>
-                        <div class="book-author">Morgan Housel</div>
-                        <div class="stars">
-                            <span class="s sf">★</span>
-                            <span class="s sf">★</span>
-                            <span class="s sf">★</span>
-                            <span class="s sf">★</span>
-                            <span class="s sh">★</span>
+                        <div class="book-cover-wrap">
+                            <img src="psyofmoney.jpg" alt="The Psychology of Money cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-status s-read">Read</div>
+                            <div class="book-title">The Psychology of Money</div>
+                            <div class="book-author">Morgan Housel</div>
+                            <div class="stars">
+                                <span class="s sf">★</span>
+                                <span class="s sf">★</span>
+                                <span class="s sf">★</span>
+                                <span class="s sf">★</span>
+                                <span class="s sh">★</span>
+                            </div>
                         </div>
                     </div>
                     <div class="book-card">
-                        <div class="book-status s-read">Read</div>
-                        <div class="book-title">Atomic Habits</div>
-                        <div class="book-author">James Clear</div>
-                        <div class="stars">
-                            <span class="s sf">★</span>
-                            <span class="s sf">★</span>
-                            <span class="s sf">★</span>
-                            <span class="s sf">★</span>
-                            <span class="s se">★</span>
+                        <div class="book-cover-wrap">
+                            <img src="atomichabit.jpeg" alt="Atomic Habits cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-status s-read">Read</div>
+                            <div class="book-title">Atomic Habits</div>
+                            <div class="book-author">James Clear</div>
+                            <div class="stars">
+                                <span class="s sf">★</span>
+                                <span class="s sf">★</span>
+                                <span class="s sf">★</span>
+                                <span class="s sf">★</span>
+                                <span class="s se">★</span>
+                            </div>
                         </div>
                     </div>
                     <div class="book-card">
-                        <div class="book-status s-reading">Currently Reading</div>
-                        <div class="book-title">Letters from a Stoic</div>
-                        <div class="book-author">Lucius Seneca</div>
-                        <span class="reading-badge">In progress</span>
+                        <div class="book-cover-wrap">
+                            <img src="letterofstoic.jpg" alt="Letters from a Stoic cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-status s-reading">Currently Reading</div>
+                            <div class="book-title">Letters from a Stoic</div>
+                            <div class="book-author">Lucius Seneca</div>
+                            <span class="reading-badge">In progress</span>
+                        </div>
                     </div>
                     <div class="book-card">
-                        <div class="book-status s-reading">Currently Reading</div>
-                        <div class="book-title">Making It Big</div>
-                        <div class="book-author">Femi Otedola</div>
-                        <span class="reading-badge">In progress</span>
+                        <div class="book-cover-wrap">
+                            <img src="makingitbig.jpg" alt="Making It Big cover">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-status s-reading">Currently Reading</div>
+                            <div class="book-title">Making It Big</div>
+                            <div class="book-author">Femi Otedola</div>
+                            <span class="reading-badge">In progress</span>
+                        </div>
                     </div>
                 </div>
             </div>
